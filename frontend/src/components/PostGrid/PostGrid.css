@@ -1,0 +1,49 @@
+.categoryTitle {  
+  padding: 05px 0px 5px 0px;
+  height: 100%;
+  width: 100%;
+  background-color: #0079D3;
+  color: white;  
+  display: flex;  
+  align-items: flex-start;
+  justify-content: flex-start;     
+  font-size: 12px;
+  font-weight: 700;  
+  margin-top: 32px;
+  margin-bottom: 10px;
+}
+
+.categoryTitle div {
+ margin-left: 8px;
+}
+
+.categoryPostList {
+  height: 100%;
+  width: 100%;    
+  background-color: white;
+  list-style-type: none;
+  list-style: none;
+  margin: auto 0;
+  padding: 0;  
+  border-bottom-width: 1px;
+  border-bottom-color: lightslategray;
+}
+
+.postGridContainer {
+  width: 50%;
+  height: 100%;
+  display: flex;  
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.postLeftBar {
+  height: 100%;
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #F8F9FA
+}
