@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom'
 import Home from './components/Navigation/Home/Home'
 
 class App extends Component {
+
   render() {
     return (
       <Layout>        

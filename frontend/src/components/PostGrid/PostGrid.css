@@ -32,6 +32,7 @@
 .postGridContainer {
   width: 50%;
   height: 100%;
+  margin: auto;
   display: flex;  
   flex-direction: column;
   align-self: center;
