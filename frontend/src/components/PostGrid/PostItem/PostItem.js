@@ -12,8 +12,8 @@ const PostItem = (props) => {
     <div className={classes.postContainer}>
       <div className={classes.postLeftBar}>
         <div className={classes.Arrow}>        
-          <IconButton onClick={() => {
-            props.onUpdateVote(id, { voteScore: voteScore + 1 })
+          <IconButton onClick={() => {            
+            props.onUpdateVote(id, 'upVote')
           }}>
             <KeyboardArrowUp />
           </IconButton>
@@ -21,7 +21,7 @@ const PostItem = (props) => {
         {voteScore}      
         <div>
         <IconButton onClick={() => {
-          props.onUpdateVote(id, { id, voteScore: voteScore - 1 })
+          props.onUpdateVote(id, 'downVote')
         }}>
           <KeyboardArrowDown />
         </IconButton>

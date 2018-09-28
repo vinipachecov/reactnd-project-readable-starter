@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { updatePost, getPostById } from '../../../actions/PostActions';
+import { 
+  updatePost,
+  getPostById,
+  votePost
+ } from '../../../actions/PostActions';
 import { 
   getPostComments, 
   updateComment, 
@@ -8,7 +12,8 @@ import {
   onNewCommentAuthorChange,
   onNewCommentMessageChange,
   createNewComment,
-  deleteCommentById
+  deleteCommentById,
+  voteComment
  } from '../../../actions/CommentActions';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Post from './Post/Post';
@@ -61,6 +66,8 @@ export class PostDetails extends Component {
       selectedComent,
       createNewComment,
       commentMessage,
+      votePost,
+      voteComment,
       commentAuthor
     } = this.props;    
 
@@ -71,6 +78,7 @@ export class PostDetails extends Component {
         <Aux>
           <div className={classes.topContainer}>        
             <Post 
+              onVotePost={votePost}
               onUpdatePost={updatePost}
               data={currentPost}
             />
@@ -87,7 +95,7 @@ export class PostDetails extends Component {
                   <Comment 
                     data={comment}
                     key={index}
-                    updateComment={updateComment}
+                    onVoteComment={voteComment}                    
                     onSelectComment={selectCommentToEdit}
                     onDeleteComment={deleteCommentById}
                   />
@@ -127,6 +135,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {  
   updatePost,
+  voteComment,
+  votePost,
   getPostById,
   getPostComments,
   updateComment,

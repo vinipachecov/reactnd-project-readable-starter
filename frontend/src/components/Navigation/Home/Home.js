@@ -3,7 +3,7 @@ import classes from './Home.css'
 import PostGrid from '../../PostGrid/PostGrid';
 import CategoryList from '../../CategoryList/CategoryList';
 import { getCategories, setCurrentCategory } from '../../../actions/CategoryActions';
-import { getAllPosts, setCurrentPost, updatePost } from '../../../actions/PostActions';
+import { getAllPosts, setCurrentPost, updatePost, votePost } from '../../../actions/PostActions';
 import { connect } from 'react-redux'
 
 
@@ -18,20 +18,22 @@ export class Home extends Component {
     const { 
       categoryList,
       currentCategory,
-      postList
-    } = this.props;
-    console.log(this.props.currentPost)
+      postList,
+      votePost,
+      setCurrentPost,
+      setCurrentCategory
+    } = this.props;    
     return (
       <div className={classes.container}>
         <PostGrid
-          onPressItem={this.props.updatePost} 
+          onVotePost={votePost} 
           postList={postList}
           currentCategory={currentCategory}
-          onSelectPost={this.props.setCurrentPost}
+          onSelectPost={setCurrentPost}
         />
         <CategoryList 
           categories={categoryList}
-          onPress={this.props.setCurrentCategory}
+          onPress={setCurrentCategory}
         />
       </div>
     )
@@ -47,7 +49,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  updatePost,
+  votePost,
   getCategories,
   getAllPosts,
   setCurrentPost,

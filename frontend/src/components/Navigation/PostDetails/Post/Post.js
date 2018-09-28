@@ -11,9 +11,9 @@ const Post = (props) => {
     title,
     author,
     timestamp,
-    onUpdatePost,
     id
   } = props.data;
+  const { onVotePost } = props;
   return (
     <div className={classes.PostDetailContainer}>
       <div className={classes.PostTitle}>
@@ -22,14 +22,15 @@ const Post = (props) => {
       <div className={classes.postContent}>              
         <div className={classes.voteStatusContainer}>        
         <IconButton onClick={() => {
-            props.onUpdatePost(id, { voteScore: voteScore + 1 })
+          console.log('votando');
+            onVotePost(id, 'upVote');            
           }}
         >
           <KeyboardArrowUp />             
         </IconButton>        
         {voteScore}  
         <IconButton onClick={() => {
-            props.onUpdatePost(id, { voteScore: voteScore - 1 })
+            onVotePost(id, 'downVote');
           }}
         >
           <KeyboardArrowDown />        

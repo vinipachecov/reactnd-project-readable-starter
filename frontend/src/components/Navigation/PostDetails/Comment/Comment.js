@@ -11,14 +11,14 @@ const Comment = (props) => {
       <div className={classes.commentContent}>      
         <div className={classes.voteCommentStatus}>
           <IconButton onClick={() => 
-              props.updateComment(id, { voteScore: voteScore + 1 })
+              props.onVoteComment(id, 'upVote')
             }
           >
             <KeyboardArrowUp />             
           </IconButton>
             {voteScore}            
           <IconButton onClick={() => 
-              props.updateComment(id, { voteScore: voteScore - 1 })
+              props.onVoteComment(id, 'downVote')
             }
           >
             <KeyboardArrowDown />   

@@ -32,3 +32,10 @@ export const updatePost = (postId, data) => {
     dispatch({ type: SEND_UPDATED_POST, payload: res });
   };
 };
+
+export const votePost =  (postId, option) =>  {
+  return async dispatch => {    
+    const res = await API.votePost(postId, option);        
+    dispatch({ type: SEND_UPDATED_POST, payload: res });    
+  }
+}

@@ -32,7 +32,7 @@ const PostGrid = (props) => {
     currentCategory,
     postList,
     onSelectPost,
-    onPressItem
+    onVotePost
   } = props;
   let postToShow = [...postList];
   if (currentCategory !== '' && currentCategory !== 'all') {
@@ -58,7 +58,7 @@ const PostGrid = (props) => {
               key={index}
             >            
               <PostItem 
-                onUpdateVote={onPressItem}
+                onUpdateVote={onVotePost}
                 post={post}    
                 onPress={onSelectPost}           
               />             

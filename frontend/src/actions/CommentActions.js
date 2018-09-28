@@ -18,6 +18,13 @@ export const getPostComments = (postId) => {
     dispatch({ type: SEND_COMMENT_LIST, payload: comments });
   };
 }  
+
+export const voteComment =  (commentId, option) =>  {
+  return async dispatch => {    
+    const res = await API.voteCommentById(commentId, option);        
+    dispatch({ type: SEND_UPDATED_COMMENT, payload: res });    
+  }
+}
   
 
 export const updateComment = (commentId, data) => {

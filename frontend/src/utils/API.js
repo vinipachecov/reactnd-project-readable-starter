@@ -66,6 +66,21 @@ class API {
     }        
   }
 
+  async votePost(postId, option) {        
+    const body = {
+      option
+    }
+    const config = this.buildAuthentication();
+    try {
+      const res = await axios.post(`${this.address}/posts/${postId}`, body, config);      
+      return res.data;
+    } catch (error) {
+      console.log(error);      
+    }        
+  }
+
+  // Comments ---------
+
   async updateComment(commentId, data) {
     const body = {
       ...data
@@ -79,6 +94,8 @@ class API {
     }            
   }
 
+  
+
   async createComment(newComment) {
     const body = {
       ...newComment
@@ -91,6 +108,20 @@ class API {
       console.log(error);      
     }
   }
+
+  async voteCommentById(commentId, option) {
+    const body = {
+      option
+    };
+    const config = this.buildAuthentication();
+    try {
+      const res = await axios.post(`${this.address}/comments/${commentId}`, body, config)      
+      return res.data;
+    } catch (error) {
+      console.log(error);      
+    }
+  }
+
 
   async deleteCommentById(commentId) {
     const config = this.buildAuthentication();
