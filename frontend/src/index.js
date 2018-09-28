@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -14,14 +13,6 @@ const logger = createLogger({
   diff: true,
   logErrors: true,  
 })
-// const logger = store => next => action => {
-//   console.group(action.type)
-//   console.info('dispatching', action)
-//   let result = next(action)
-//   console.log('next state', store.getState())
-//   console.groupEnd(action.type)
-//   return result
-// }
 
 const store = createStore(reducers,    
   {},
@@ -33,9 +24,7 @@ const store = createStore(reducers,
 
 ReactDOM.render(
   <Provider store={store}>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-</Provider>,
+      <App />
+  </Provider>,
  document.getElementById('root'));
 registerServiceWorker();

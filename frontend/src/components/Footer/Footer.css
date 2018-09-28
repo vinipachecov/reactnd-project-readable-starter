@@ -1,4 +1,4 @@
-.footer {
+.footer {  
   height: 86px;
   width: 100%;
   bottom: 0;
@@ -8,5 +8,5 @@
   justify-content: center;
   background-color: #FFF;
   align-items: center;
-  box-sizing: border-box;  
+  box-sizing: border-box;      
 }

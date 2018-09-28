@@ -1,0 +1,63 @@
+.commentContainer {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;  
+}
+
+.voteCommentStatus {
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  justify-content: center;  
+  align-items: center;
+  margin: 0;
+  padding-left: 5px;  
+}
+
+.voteCommentStatus svg {
+  font-size: 45px;
+}
+
+.commentBody {
+  margin-top: 2%;
+  margin-left: 2%;
+  text-align: justify;
+  margin-right: 1%;
+  width: 80%;
+  font-size: 16px;   
+}
+
+
+.commentContent {
+  margin-top: 4%;
+  display: flex;
+  flex-direction: row;    
+}
+
+.userCommentDetails {
+  width: 100%;
+  height: fit-content;  
+  display: flex;
+  flex-direction: column;  
+  
+}
+
+.userCommentDetails div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 2%;
+  margin-bottom: 2%;
+} 
+
+.userCommentDetails div:first-child {
+  font-weight: bold;
+  color: #7F7F7F  
+}
+
+.userCommentDetails div:last-child {
+  font-weight: 400;
+  color: #0079D3;
+}

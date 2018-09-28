@@ -1,0 +1,48 @@
+
+.container {        
+  height: 100%;
+  width: 100%;    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+}
+
+.loaderContainer {
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+}
+
+.topContainer {
+  margin-top: 16px;  
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  width: 50%;    
+  background-color: white;
+}
+
+.commentList {
+  background-color: white;
+  width: 50%;
+  height: fit-content;
+}
+
+.numberOfComments {
+  font-size: 20px;
+  width: 100%;  
+  height: fit-content;    
+  margin-left: 2%;  
+}
+
+.lineSeparator {
+  height: 1px;
+  width: 96%;
+  margin-top: 2%;
+  align-self: center; 
+  background-color: #DAE0E6;
+}

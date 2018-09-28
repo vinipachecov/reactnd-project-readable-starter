@@ -1,8 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import classes from './CategoryList.css';
+import { Button } from '@material-ui/core';
 
 const CategoryList = (props) => {
-  const { categories } = props;
+  const { categories } = props;   
+  console.log(props); 
   return (
     <div className={classes.CategoryContainer}>
       <div className={classes.content}>
@@ -15,8 +18,23 @@ const CategoryList = (props) => {
                 categories.map((cat,index) => {
                 return (
                   <li key={index}>
-                    {cat.name}
-                  </li>
+                  <Link
+                     to={`/${
+                       cat.name === 'all' ?
+                       ''
+                       :
+                       cat.name
+                      }`}
+                    >                    
+                  <Button 
+                    color="primary" 
+                    className={classes.button}
+                    onClick={() => props.onPress(cat.name)}
+                  >                    
+                      {cat.name}                    
+                  </Button>
+                  </Link>
+                  </li>                  
                 )
               })}
             </ul>

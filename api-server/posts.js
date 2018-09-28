@@ -24,6 +24,18 @@ const defaultData = {
     voteScore: -5,
     deleted: false,
     commentCount: 0
+  },
+  "6ni6ok3yy7mf1p33lnez": {
+    id: '6ni6ok3yy7mf1p33lnez',
+    timestamp: 1468479767195,
+    title: 'New LinkedIn Course available!',
+    body: `Aproveite o novo serviço Udacity Pro e esteja ainda mais preparado para os desafios de carreira.
+    O Selo U Pro destaca os programas que agora possuem serviços de carreira, que irão te preparar para assumir uma posição no mercado de trabalho. Ao unir nossa metodologia de aprendizado por projetos aos conteúdos técnicos e ferramentas de carreira, eles são a melhor opção para quem quer alavancar ou mudar sua trajetória profissional.`,
+    author: 'thingone',
+    category: 'udacity',
+    voteScore: 35,
+    deleted: false,
+    commentCount: 0
   }
 }
 

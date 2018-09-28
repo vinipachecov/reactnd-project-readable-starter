@@ -1,0 +1,35 @@
+.boxContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  width: 50%;
+  background-color: white;
+  margin-bottom: 2%
+}
+
+.boxContainer div:first-child {
+  align-self: flex-start;
+  margin-left: 2%;
+  margin-top: 2%;   
+  font-size: 25px;
+}
+
+.textBox {
+  width: 97%;     
+  min-height: 80%;
+}
+
+.textBox div:first-child {
+  border-color: #dae0e6;
+  border-style: groove;
+}
+
+.textBox div:last-child {  
+  min-width: 92%;
+  min-height: 80%;    
+}
+
+.textBox textarea {
+  width: 100%;
+} 
+

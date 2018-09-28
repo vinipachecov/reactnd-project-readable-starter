@@ -30,28 +30,47 @@ import Divider from '@material-ui/core/Divider';
 const PostGrid = (props) => {
   const {
     currentCategory,
-    postList
+    postList,
+    onSelectPost,
+    onPressItem
   } = props;
+  let postToShow = [...postList];
+  if (currentCategory !== '' && currentCategory !== 'all') {
+    postToShow = postList.filter(post => post.category === currentCategory);
+  }  
   return (    
     <div className={classes.postGridContainer}>
+    
       <div className={classes.categoryTitle}>
-        <div>{currentCategory ? currentCategory : 'Posts' }</div>      
+        <div>
+        {
+          currentCategory !== '' && currentCategory !== 'all' ?
+          currentCategory : 'Posts' 
+        }
+         </div>      
       </div>
       <ul className={classes.categoryPostList}>   
-        {postList.map((post, index) => {
+        {
+          postToShow.length > 0 ?           
+          postToShow.map((post, index) => {
           return (
             <li 
               key={index}
-            >
+            >            
               <PostItem 
-                overallScore={post.voteScore}
-                postName={post.title}
-                commentsNumber={post.commentCount}
-              />
+                onUpdateVote={onPressItem}
+                post={post}    
+                onPress={onSelectPost}           
+              />             
               <Divider />
             </li>            
           )
-        })}
+          })
+          :
+          <div>
+            Oops, no posts in this category!
+          </div>
+        }
       </ul>
     </div>    
   )

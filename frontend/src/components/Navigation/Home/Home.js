@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import classes from './Home.css'
 import PostGrid from '../../PostGrid/PostGrid';
 import CategoryList from '../../CategoryList/CategoryList';
-import { getCategories } from '../../../actions/CategoryActions';
-import { getAllPosts } from '../../../actions/PostActions';
+import { getCategories, setCurrentCategory } from '../../../actions/CategoryActions';
+import { getAllPosts, setCurrentPost, updatePost } from '../../../actions/PostActions';
 import { connect } from 'react-redux'
 
 
@@ -20,13 +20,19 @@ export class Home extends Component {
       currentCategory,
       postList
     } = this.props;
+    console.log(this.props.currentPost)
     return (
       <div className={classes.container}>
-        <PostGrid 
+        <PostGrid
+          onPressItem={this.props.updatePost} 
           postList={postList}
           currentCategory={currentCategory}
+          onSelectPost={this.props.setCurrentPost}
         />
-        <CategoryList categories={categoryList}/>
+        <CategoryList 
+          categories={categoryList}
+          onPress={this.props.setCurrentCategory}
+        />
       </div>
     )
   }
@@ -35,12 +41,17 @@ export class Home extends Component {
 const mapStateToProps = (state) => ({
   categoryList: state.categoryData.categoryList,
   currentCategory: state.categoryData.currentCategory,
-  postList: state.postData.postList
+  postList: state.postData.postList,
+  currentPost: state.postData.currentPost,
+
 });
 
 const mapDispatchToProps = {
+  updatePost,
   getCategories,
-  getAllPosts
+  getAllPosts,
+  setCurrentPost,
+  setCurrentCategory
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
