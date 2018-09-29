@@ -30,13 +30,13 @@ const Comment = (props) => {
       </div>
       <div className={classes.userCommentDetails}>
 
-      <div>
-        <Button onClick={() => props.onSelectComment(props.data)}>
-          Edit
-        </Button>
-          
-        answered in {moment(timestamp).format('LLLL')}        
-      </div>
+        <div>
+          <Button onClick={() => props.onSelectComment(props.data)}>
+            Edit
+          </Button>
+            
+          answered in {moment(timestamp).format('LLLL')}        
+        </div>
         <div>
         <Button onClick={() => props.onDeleteComment(id)}>
           Delete

@@ -9,7 +9,7 @@ import {
 const initialState = {
   postList: [],
   currentPost: null,
-  postFilter: 'Score'
+  postFilter: 'Score',  
 }
 
 export default (state = initialState, action) => {

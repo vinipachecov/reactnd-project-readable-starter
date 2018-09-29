@@ -39,15 +39,26 @@ const PostItem = (props) => {
         <div>
           Comments: {commentCount}
         </div>
-      </div>     
-      <div className={classes.userPostDetails}>
-          <div>
-            posted in {moment(timestamp).format('LLLL')}
+        <div className={classes.userPostDetails}>
+          <div className={classes.postUserData}>
+            <div>
+            answered in {moment(timestamp).format('LLLL')}        
+            </div>
+            <div>
+            {author}       
+            </div>         
           </div>
-          <div>
-            {author}          
-         </div>
-      </div> 
+          <div>    
+          <Button>
+            Delete
+          </Button>      
+          <Button>
+              Edit
+            </Button>
+          </div>
+         
+        </div>  
+      </div>          
     </div>
   )
 }

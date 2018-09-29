@@ -4,7 +4,7 @@ const Footer = () => {
   return (   
     <footer>
       <div className={classes.footer}>
-        Feito por Vinícius Pacheco Vieira
+        created by Vinícius Pacheco Vieira
       </div>   
     </footer> 
   )

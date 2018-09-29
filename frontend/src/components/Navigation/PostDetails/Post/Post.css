@@ -65,26 +65,26 @@
 
 .userPostDetails {
   width: 100%;
-  height: fit-content;   
+  height: fit-content;  
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-end;  
+  flex-direction: column;  
+  
 }
 
 .userPostDetails div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-right: 2%;
   margin-bottom: 2%;
 } 
 
-.userPostDetails div:last-child {  
-  margin-bottom: 0;
-  font-weight: 400;
-  color: #0079D3;
-}
-
-
 .userPostDetails div:first-child {
   font-weight: bold;
   color: #7F7F7F  
+}
+
+.userPostDetails div:last-child {
+  font-weight: 400;
+  color: #0079D3;
 }

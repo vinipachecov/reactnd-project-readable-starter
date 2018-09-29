@@ -45,7 +45,7 @@ export default (state = initialState, action) => {
   case ON_NEW_COMMENT_MESSAGE_CHANGE:
     return {
       ...state,
-      newCommentMessage: action.payload
+      newCommentMessage: action.payload,      
     };
   case ON_NEW_COMMENT_AUTHOR_CHANGE: 
     return {
@@ -57,7 +57,10 @@ export default (state = initialState, action) => {
       ...state,
       commentList: [...state.commentList, action.payload].sort((a,b) => {
         return a.voteScore < b.voteScore ? 1: -1;
-      })
+      }),
+      newCommentAuthor: '',
+      newCommentMessage: '',
+      selectedComent: null
     };
   case ON_DELETE_COMMENT:
     return { 

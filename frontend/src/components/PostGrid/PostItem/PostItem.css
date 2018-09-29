@@ -1,6 +1,5 @@
 
-.postLeftBar {
-  height: 100%;
+.postLeftBar {  
   width: 10%;
   display: flex;
   flex-direction: column;
@@ -12,10 +11,22 @@
 }
 
 .postContent {
+  width: 100%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   margin-left: 20px;
+}
+
+.postContent a {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.postContent div:first-child {
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 
@@ -24,11 +35,9 @@
 }
 
 
-
-
 .postContainer {
   width: 100%;
-  height: 100px;
+  height: fit-content;
   margin: 0px;
   display: flex;
   flex-direction: row;
@@ -50,14 +59,29 @@
   height: fit-content;   
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-end;  
+  justify-content: space-around;  
 }
 
-.userPostDetails div {
-  margin-right: 2%;
+.userPostDetails div {  
   margin-bottom: 2%;
 } 
+
+.postUserData {
+  display: flex;
+  flex-direction: column;  
+}
+.postUserData div {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;  
+  margin-right: 2%;
+}
+
+.userPostDetails div:first-child {  
+  font-weight: bold;
+  color: #7F7F7F  
+}
+
 
 .userPostDetails div:last-child {  
   margin-bottom: 0;
@@ -66,7 +90,3 @@
 }
 
 
-.userPostDetails div:first-child {
-  font-weight: bold;
-  color: #7F7F7F  
-}
