@@ -4,8 +4,7 @@ import classes from './CategoryList.css';
 import { Button } from '@material-ui/core';
 
 const CategoryList = (props) => {
-  const { categories } = props;   
-  console.log(props); 
+  const { categories } = props;     
   return (
     <div className={classes.CategoryContainer}>
       <div className={classes.content}>

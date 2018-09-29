@@ -3,13 +3,13 @@ import classes from './PostItem.css';
 import { Link } from 'react-router-dom';
 import { KeyboardArrowDown, KeyboardArrowUp } from '@material-ui/icons';
 import { IconButton, Button } from '@material-ui/core';
+import moment from 'moment';
 
 
 const PostItem = (props) => {
-  const { title, commentCount, voteScore, category, id } = props.post;  
-  console.log(props);    
+  const { title, commentCount, voteScore, category, id, timestamp, author } = props.post;    
   return (
-    <div className={classes.postContainer}>
+    <div className={classes.postContainer}>   
       <div className={classes.postLeftBar}>
         <div className={classes.Arrow}>        
           <IconButton onClick={() => {            
@@ -39,7 +39,15 @@ const PostItem = (props) => {
         <div>
           Comments: {commentCount}
         </div>
-      </div>      
+      </div>     
+      <div className={classes.userPostDetails}>
+          <div>
+            posted in {moment(timestamp).format('LLLL')}
+          </div>
+          <div>
+            {author}          
+         </div>
+      </div> 
     </div>
   )
 }

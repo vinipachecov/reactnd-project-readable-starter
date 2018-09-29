@@ -3,7 +3,7 @@ import classes from './Home.css'
 import PostGrid from '../../PostGrid/PostGrid';
 import CategoryList from '../../CategoryList/CategoryList';
 import { getCategories, setCurrentCategory } from '../../../actions/CategoryActions';
-import { getAllPosts, setCurrentPost, updatePost, votePost } from '../../../actions/PostActions';
+import { getAllPosts, setCurrentPost, votePost, changePostFilter } from '../../../actions/PostActions';
 import { connect } from 'react-redux'
 
 
@@ -21,15 +21,20 @@ export class Home extends Component {
       postList,
       votePost,
       setCurrentPost,
-      setCurrentCategory
-    } = this.props;    
+      setCurrentCategory,
+      changePostFilter,
+      postFilter
+    } = this.props;            
     return (
-      <div className={classes.container}>
+      <div className={classes.container}>       
+    
         <PostGrid
           onVotePost={votePost} 
           postList={postList}
           currentCategory={currentCategory}
           onSelectPost={setCurrentPost}
+          postFilter={postFilter}
+          onChangeFilter={changePostFilter}
         />
         <CategoryList 
           categories={categoryList}
@@ -45,6 +50,7 @@ const mapStateToProps = (state) => ({
   currentCategory: state.categoryData.currentCategory,
   postList: state.postData.postList,
   currentPost: state.postData.currentPost,
+  postFilter: state.postData.postFilter
 
 });
 
@@ -53,7 +59,8 @@ const mapDispatchToProps = {
   getCategories,
   getAllPosts,
   setCurrentPost,
-  setCurrentCategory
+  setCurrentCategory,
+  changePostFilter
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

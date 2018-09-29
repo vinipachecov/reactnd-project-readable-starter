@@ -30,7 +30,9 @@ export default (state = initialState, action) => {
         return comment;
       }).sort((a,b) => {
         return a.voteScore < b.voteScore ? 1: -1;
-      })
+      }),
+      newCommentAuthor: '',
+      newCommentMessage: ''
     }
   case SET_COMMENT_TO_EDIT:
     return {

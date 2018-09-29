@@ -10,6 +10,8 @@ const AnswerBox = (props) => {
     onAuthorChange,
     onMessageChange,
     createComment,
+    updateComment,
+    selectedComment,
     author,
     message,    
     currentPost,
@@ -44,15 +46,24 @@ const AnswerBox = (props) => {
     </form>
     <Button 
       onClick={() => {
-        createComment({        
-          id: uuid.v4(),  
-          body: message,
-          author,
-          parentId: currentPost.id,
-          timestamp: moment.now(),
-          parentDeleted: false,
-          voteScore: 0      
-        })
+        if (author !== '' && message !== '') {
+          if (selectedComment) {
+            updateComment(selectedComment.id, {
+              body: message,
+              author
+            });
+          } else {
+            createComment({        
+              id: uuid.v4(),  
+              body: message,
+              author,
+              parentId: currentPost.id,
+              timestamp: moment.now(),
+              parentDeleted: false,
+              voteScore: 0      
+            })
+          }          
+        } 
       }}
       variant="contained"
       color="primary"

@@ -3,28 +3,6 @@ import classes from './PostGrid.css';
 import PostItem from './PostItem/PostItem';
 import Divider from '@material-ui/core/Divider';
 
-// const postList = [
-//   {
-//     postName: 'Postagem 1',
-//     commentsNumber: 12000, 
-//     overallScore: 12
-//   },
-//   {
-//     postName: 'Postagem 4',
-//     commentsNumber: 500, 
-//     overallScore: 58
-//   },
-//   {
-//     postName: 'Postagem 2',
-//     commentsNumber: 300, 
-//     overallScore: -58
-//   },
-//   {
-//     postName: 'Postagem 3',
-//     commentsNumber: 100, 
-//     overallScore: -5
-//   }
-// ];
 
 
 const PostGrid = (props) => {
@@ -32,7 +10,9 @@ const PostGrid = (props) => {
     currentCategory,
     postList,
     onSelectPost,
-    onVotePost
+    onVotePost,
+    postFilter,
+    onChangeFilter
   } = props;
   let postToShow = [...postList];
   if (currentCategory !== '' && currentCategory !== 'all') {
@@ -40,6 +20,19 @@ const PostGrid = (props) => {
   }  
   return (    
     <div className={classes.postGridContainer}>
+
+      <div className={classes.filterContainer}>          
+      <div>Filtered By</div>
+          <select 
+            onChange={(event) => {                
+              onChangeFilter(event.target.value)}                               
+            }                            
+            value={postFilter}
+          >                
+            <option value="Score">Score</option>
+            <option value="Date">Date</option>                
+          </select>        
+      </div>
     
       <div className={classes.categoryTitle}>
         <div>

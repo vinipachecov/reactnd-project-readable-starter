@@ -1,5 +1,5 @@
 import API from '../utils/API';
-import { SEND_ALL_POSTS, SET_CURRENT_POST, SEND_UPDATED_POST } from './ActionTypes';
+import { SEND_ALL_POSTS, SET_CURRENT_POST, SEND_UPDATED_POST, SEND_POST_FILTER } from './ActionTypes';
 
 export const getAllPosts = () => {  
   return async dispatch => {    
@@ -39,3 +39,7 @@ export const votePost =  (postId, option) =>  {
     dispatch({ type: SEND_UPDATED_POST, payload: res });    
   }
 }
+
+export const changePostFilter = (option) => ({
+  type: SEND_POST_FILTER, payload: option
+});
