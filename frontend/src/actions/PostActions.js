@@ -14,7 +14,8 @@ export const getAllPosts = () => {
 export const getPostById = (postId) => {  
   return async dispatch => {    
     const post = await API.getPostById(postId);      
-    dispatch ({ type: SET_CURRENT_POST, payload: post});                          
+    dispatch ({ type: SET_CURRENT_POST, payload: post});  
+    return post;                           
   }
 }
 

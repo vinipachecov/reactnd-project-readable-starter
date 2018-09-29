@@ -51,10 +51,14 @@ const PostItem = (props) => {
           <div>    
           <Button>
             Delete
-          </Button>      
-          <Button>
+          </Button>
+          <Link
+            to={`/post/${id}`}
+          >
+          <Button onClick={() => props.onPress(props.post)}>
               Edit
-            </Button>
+          </Button>
+          </Link>      
           </div>
          
         </div>  
