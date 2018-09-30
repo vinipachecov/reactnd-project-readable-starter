@@ -12,7 +12,7 @@ export class EditPost extends Component {
     author: '',    
     postContent: '',
     postTitle: '',
-    category: ''
+    category: ''    
   };
 
   async componentDidMount() {

@@ -1,9 +1,10 @@
 import API from '../utils/API';
-import { SEND_ALL_POSTS, SET_CURRENT_POST, SEND_UPDATED_POST, SEND_POST_FILTER } from './ActionTypes';
+import { SEND_ALL_POSTS, SET_CURRENT_POST, SEND_UPDATED_POST, SEND_POST_FILTER, DELETE_POST } from './ActionTypes';
 
 export const getAllPosts = () => {  
   return async dispatch => {    
-    const posts = await API.getPosts();        
+    const posts = await API.getPosts();   
+    const validPosts = posts.filter(post => !post.deleted)      
     posts.sort((a,b) => {
       return a.voteScore < b.voteScore ? 1: -1;
     });
@@ -13,7 +14,10 @@ export const getAllPosts = () => {
 
 export const getPostById = (postId) => {  
   return async dispatch => {    
-    const post = await API.getPostById(postId);      
+    let post = await API.getPostById(postId);          
+    if (JSON.stringify(post) === JSON.stringify({})) {
+      post = null      
+    }
     dispatch ({ type: SET_CURRENT_POST, payload: post});  
     return post;                           
   }
@@ -44,3 +48,12 @@ export const votePost =  (postId, option) =>  {
 export const changePostFilter = (option) => ({
   type: SEND_POST_FILTER, payload: option
 });
+
+export const deletePostById = (postId) => {
+  return async dispatch => {
+    const res = await API.deletePostById(postId);
+    console.log('retorno do delete = ', res);
+    dispatch({type: DELETE_POST, payload: postId});
+  }
+};
+

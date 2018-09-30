@@ -3,7 +3,13 @@ import classes from './Home.css'
 import PostGrid from '../../PostGrid/PostGrid';
 import CategoryList from '../../CategoryList/CategoryList';
 import { getCategories, setCurrentCategory } from '../../../actions/CategoryActions';
-import { getAllPosts, setCurrentPost, votePost, changePostFilter } from '../../../actions/PostActions';
+import { 
+  getAllPosts, 
+  setCurrentPost, 
+  votePost, 
+  changePostFilter,
+  deletePostById
+} from '../../../actions/PostActions';
 import { connect } from 'react-redux'
 
 
@@ -23,8 +29,10 @@ export class Home extends Component {
       setCurrentPost,
       setCurrentCategory,
       changePostFilter,
+      deletePostById,
       postFilter
-    } = this.props;            
+    } = this.props;   
+             
     return (
       <div className={classes.container}>       
     
@@ -35,6 +43,7 @@ export class Home extends Component {
           onSelectPost={setCurrentPost}
           postFilter={postFilter}
           onChangeFilter={changePostFilter}
+          onDeletePost={deletePostById}
         />
         <CategoryList 
           categories={categoryList}
@@ -60,7 +69,8 @@ const mapDispatchToProps = {
   getAllPosts,
   setCurrentPost,
   setCurrentCategory,
-  changePostFilter
+  changePostFilter,
+  deletePostById
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -27,11 +27,11 @@ const PostItem = (props) => {
         </IconButton>
         </div>
       </div>      
-      <div 
-        onClick={() => props.onPress(props.post)}
+      <div         
         className={classes.postContent}
       >        
         <Link
+          onClick={() => { props.onPress(props.post) }}
           to={`/${category}/post/${id}`}          
         >
           {title}
@@ -49,7 +49,9 @@ const PostItem = (props) => {
             </div>         
           </div>
           <div>    
-          <Button>
+          <Button onClick={() => {
+              props.onDeletePost(id)                
+          }}>
             Delete
           </Button>
           <Link

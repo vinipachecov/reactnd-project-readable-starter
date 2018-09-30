@@ -9,13 +9,17 @@ import {
   ON_DELETE_COMMENT
 } from "./ActionTypes";
 
-export const getPostComments = (postId) => {
+export const getPostComments = (post, postId) => {
   return async dispatch => {
-    const comments = await API.getPostComments(postId);  
-    comments.sort((a,b) => {
-      return a.voteScore < b.voteScore ? 1: -1;
-    });
-    dispatch({ type: SEND_COMMENT_LIST, payload: comments });
+    if (post) {
+      const comments = await API.getPostComments(postId);  
+      comments.sort((a,b) => {
+        return a.voteScore < b.voteScore ? 1: -1;
+      });
+      dispatch({ type: SEND_COMMENT_LIST, payload: comments });
+    } else {
+      dispatch({ type: SEND_COMMENT_LIST, payload: [] });
+    }            
   };
 }  
 

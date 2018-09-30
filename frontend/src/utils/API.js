@@ -78,6 +78,16 @@ class API {
       console.log(error);      
     }        
   }
+  
+  async deletePostById(postId) {            
+    const config = this.buildAuthentication();
+    try {
+      const res = await axios.delete(`${this.address}/posts/${postId}`, config);      
+      return res.data;
+    } catch (error) {
+      console.log(error);      
+    }        
+  }
 
   // Comments ---------
 

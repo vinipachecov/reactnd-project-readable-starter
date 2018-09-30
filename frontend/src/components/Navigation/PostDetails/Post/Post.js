@@ -47,7 +47,7 @@ const Post = (props) => {
             Edit
           </Button>
             
-          answered in {moment(timestamp).format('LLLL')}        
+          Posted in {moment(timestamp).format('LLLL')}        
         </div>
         <div>
         <Button onClick={() => props.onDeleteComment(id)}>

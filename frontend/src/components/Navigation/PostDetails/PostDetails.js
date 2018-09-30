@@ -30,16 +30,13 @@ export class PostDetails extends Component {
   async componentDidMount() {       
     const { currentPost } = this.props;
     
-    if (currentPost) {
-      if (currentPost.commentCount > 0) {
-        await this.props.getPostComments(currentPost.id);
-      } 
+    if (currentPost) {      
+      await this.props.getPostComments(currentPost, currentPost.id);
     } else {      
-      // Fetch post data 
-      console.log(this);
+      // Fetch post data       
       const { postId } = this.props.match.params;
-      await this.props.getPostById(postId);     
-      await this.props.getPostComments(postId);
+      const post = await this.props.getPostById(postId);     
+      await this.props.getPostComments(post, postId);
     }      
   }
 
@@ -53,7 +50,7 @@ export class PostDetails extends Component {
     return 'No Comments'
   }
 
-  render() {    
+  onRenderValidPost = () => {
     const { 
       currentPost, 
       updatePost, 
@@ -69,13 +66,12 @@ export class PostDetails extends Component {
       votePost,
       voteComment,
       commentAuthor
-    } = this.props;    
+    } = this.props;  
 
-    return (
-      <div className={classes.container}>
-      {
-        currentPost ? 
-        <Aux>
+    if (currentPost) {      
+      if (!currentPost.deleted && JSON.stringify(currentPost) !== JSON.stringify({})) {
+        return (
+          <Aux>
           <div className={classes.topContainer}>        
             <Post 
               onVotePost={votePost}
@@ -113,12 +109,31 @@ export class PostDetails extends Component {
             message={commentMessage}
             author={commentAuthor}
           />
-        </Aux>
-        :
+        </Aux>          
+        )
+      }
+    } else {
+      console.log('comparação =', JSON.stringify(currentPost) !== JSON.stringify({}))
+      if (JSON.stringify(currentPost) !== JSON.stringify({})) {
+        return (
+          <div className={classes.loaderContainer}>
+            Post not found or deleted!
+          </div>   
+          );
+      } 
+      return (
         <div className={classes.loaderContainer}>
           <CircularProgress />
-        </div>                        
-      }        
+        </div>   
+      );      
+    }
+    
+  }
+  
+  render() {    
+    return (
+      <div className={classes.container}>
+        {this.onRenderValidPost()}
       </div>
     )
   }
