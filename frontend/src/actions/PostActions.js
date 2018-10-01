@@ -1,5 +1,12 @@
 import API from '../utils/API';
-import { SEND_ALL_POSTS, SET_CURRENT_POST, SEND_UPDATED_POST, SEND_POST_FILTER, DELETE_POST } from './ActionTypes';
+import { 
+  SEND_ALL_POSTS, 
+  SET_CURRENT_POST, 
+  SEND_UPDATED_POST, 
+  SEND_POST_FILTER, 
+  DELETE_POST, 
+  ON_SEND_NEW_POST
+} from './ActionTypes';
 
 export const getAllPosts = () => {  
   return async dispatch => {    
@@ -57,3 +64,9 @@ export const deletePostById = (postId) => {
   }
 };
 
+export const createNewPost = (postData) => {
+  return async dispatch => {
+    const res = await API.createPost(postData);
+    dispatch({ type: ON_SEND_NEW_POST, payload: res });
+  }
+}

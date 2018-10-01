@@ -48,7 +48,7 @@ export class Home extends Component {
         <CategoryList 
           categories={categoryList}
           onPress={setCurrentCategory}
-        />
+        />         
       </div>
     )
   }

@@ -65,3 +65,12 @@
   cursor: pointer;
   margin-left: 2%;
 }
+
+.postGridContainer button {  
+  margin-top: 3%;
+}
+
+.postGridContainer a {  
+  margin-top: 3%;
+  text-decoration: none;  
+}

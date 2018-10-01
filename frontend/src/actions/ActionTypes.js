@@ -7,6 +7,7 @@ export const SEND_ALL_POSTS = 'SEND_ALL_POSTS';
 export const SET_CURRENT_POST = 'SET_CURRENT_POST';
 export const SEND_UPDATED_POST = 'SEND_UPDATED_POST';
 export const SEND_POST_FILTER = 'SEND_POST_FILTER';
+export const ON_SEND_NEW_POST = 'ON_SEND_NEW_POST';
 export const DELETE_POST = 'DELETE_POST';
 
 //Comments

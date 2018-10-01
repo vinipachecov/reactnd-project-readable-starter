@@ -4,7 +4,8 @@ import {
   SET_CURRENT_POST,
   SEND_UPDATED_POST,
   SEND_POST_FILTER,
-  DELETE_POST
+  DELETE_POST,
+  ON_SEND_NEW_POST
 } from "../actions/ActionTypes";
 
 const initialState = {
@@ -57,6 +58,17 @@ export default (state = initialState, action) => {
       }),
       currentPost: null,
     };
+  case ON_SEND_NEW_POST:
+    return {
+      ...state,
+      postList: [...state.postList, action.payload].sort((a, b) =>{
+        if (state.postFilter === 'Score') {
+          return a.voteScore < b.voteScore ? 1: -1;
+        } else {
+          return a.timestamp < b.timestamp ? 1: -1;
+        }
+      })
+    }; 
   default:
     return state;
   }

@@ -89,6 +89,21 @@ class API {
     }        
   }
 
+  async createPost(post) {            
+    const config = this.buildAuthentication();
+    const body = {
+      ...post
+    };
+    try {
+      const res = await axios.post(`${this.address}/posts/`, body, config);      
+      return res.data;
+    } catch (error) {
+      console.log(error);      
+    }        
+  }
+
+
+
   // Comments ---------
 
   async updateComment(commentId, data) {

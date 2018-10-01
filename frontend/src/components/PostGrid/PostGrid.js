@@ -2,6 +2,8 @@ import React from 'react'
 import classes from './PostGrid.css';
 import PostItem from './PostItem/PostItem';
 import Divider from '@material-ui/core/Divider';
+import { Button } from '@material-ui/core';
+import Link from 'react-router-dom/Link';
 
 
 
@@ -66,7 +68,17 @@ const PostGrid = (props) => {
             Oops, no posts in this category!
           </div>
         }
-      </ul>
+      </ul>      
+      <Link
+        to={'/post/newPost'}
+       >
+        <Button 
+            variant="contained"
+            color="primary"      
+          >
+          Create New Post           
+        </Button>      
+      </Link>
     </div>    
   )
 }
