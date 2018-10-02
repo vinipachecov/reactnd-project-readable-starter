@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
   case SEND_UPDATED_COMMENT:
     return {
       ...state,
-      commentList: state.commentList.map(comment => {
+      commentList: [...state.commentList].map(comment => {
         if (comment.id === action.payload.id) {
           return { ...comment, ...action.payload };          
         }
@@ -65,7 +65,7 @@ export default (state = initialState, action) => {
   case ON_DELETE_COMMENT:
     return { 
       ...state,
-      commentList: state.commentList
+      commentList: [...state.commentList]
         .filter(comment =>  comment.id !== action.payload.id)
         .sort((a,b) => {
           return a.voteScore < b.voteScore ? 1: -1;

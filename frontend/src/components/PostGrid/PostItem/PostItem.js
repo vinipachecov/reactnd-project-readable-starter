@@ -32,7 +32,7 @@ const PostItem = (props) => {
       >        
         <Link
           onClick={() => { props.onPress(props.post) }}
-          to={`/${category}/post/${id}`}          
+          to={`/${category}/${id}`}          
         >
           {title}
         </Link>

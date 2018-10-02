@@ -20,10 +20,10 @@ export class EditPost extends Component {
     edit: true    
   };
 
-  async componentDidMount() {
-    console.log(this);
+  async componentDidMount() {    
+    const { post_id } = this.props.match.params;
     const { currentPost } = this.props;
-    if (currentPost) {
+    if (post_id !== 'newPost') {
       this.setState({
         postContent: currentPost.body,
         postTitle: currentPost.title,
@@ -31,11 +31,10 @@ export class EditPost extends Component {
         category: currentPost.category,
         edit: true
       });
-    } else {
-      console.log(this);      
-      const { postId } = this.props.match.params;
-      if (postId !== 'newPost') {
-        const post = await this.props.getPostById(postId);                
+    } else {      
+      const { post_id } = this.props.match.params;
+      if (post_id !== 'newPost') {
+        const post = await this.props.getPostById(post_id);                
         this.setState({
           postContent: post.body,
           postTitle: post.title,

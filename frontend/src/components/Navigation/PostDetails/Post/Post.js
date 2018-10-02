@@ -13,7 +13,7 @@ const Post = (props) => {
     timestamp,
     id
   } = props.data;
-  const { onVotePost } = props;
+  const { onVotePost, setCurrentPost } = props;
   return (
     <div className={classes.PostDetailContainer}>
       <div className={classes.PostTitle}>
@@ -43,14 +43,14 @@ const Post = (props) => {
       <div className={classes.userPostDetails}>
 
         <div>
-          <Button onClick={() => props.onSelectComment(props.data)}>
+          <Button onClick={() => props.setCurrentPost(props.data)}>
             Edit
           </Button>
             
           Posted in {moment(timestamp).format('LLLL')}        
         </div>
         <div>
-        <Button onClick={() => props.onDeleteComment(id)}>
+        <Button onClick={() => props.onDeletePost(id)}>
           Delete
         </Button>      
           {author}          

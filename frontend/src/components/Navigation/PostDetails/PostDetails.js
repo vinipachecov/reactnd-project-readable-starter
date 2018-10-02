@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { 
   updatePost,
   getPostById,
-  votePost
+  votePost,
+  setCurrentPost,
+  deletePostById
  } from '../../../actions/PostActions';
 import { 
   getPostComments, 
@@ -50,6 +52,11 @@ export class PostDetails extends Component {
     return 'No Comments'
   }
 
+  onDeletePost = async (id) => {    
+    await this.props.deletePostById(id);
+    this.props.history.goBack();
+  }
+
   onRenderValidPost = () => {
     const { 
       currentPost, 
@@ -64,7 +71,9 @@ export class PostDetails extends Component {
       createNewComment,
       commentMessage,
       votePost,
+      setCurrentPost,
       voteComment,
+      deletePostById,
       commentAuthor
     } = this.props;  
 
@@ -77,6 +86,8 @@ export class PostDetails extends Component {
               onVotePost={votePost}
               onUpdatePost={updatePost}
               data={currentPost}
+              onEditPost={setCurrentPost}
+              onDeletePost={deletePostById}
             />
             <div className={classes.numberOfComments}>
               {this.renderCommentNumber(currentPost.commentCount)}
@@ -93,7 +104,7 @@ export class PostDetails extends Component {
                     key={index}
                     onVoteComment={voteComment}                    
                     onSelectComment={selectCommentToEdit}
-                    onDeleteComment={deleteCommentById}
+                    onDeleteComment={this.onDeletePost}
                   />
                 )
               })
@@ -155,6 +166,8 @@ const mapDispatchToProps = {
   getPostById,
   getPostComments,
   updateComment,
+  setCurrentPost,
+  deletePostById,
   selectCommentToEdit,
   onNewCommentAuthorChange,
   onNewCommentMessageChange,
