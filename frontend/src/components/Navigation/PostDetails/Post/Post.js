@@ -3,6 +3,7 @@ import classes from './Post.css'
 import moment from 'moment';
 import { KeyboardArrowDown, KeyboardArrowUp } from '@material-ui/icons';
 import { IconButton, Button } from '@material-ui/core';
+import Link from 'react-router-dom/Link';
 
 const Post = (props) => {
   const {     
@@ -43,10 +44,13 @@ const Post = (props) => {
       <div className={classes.userPostDetails}>
 
         <div>
-          <Button onClick={() => props.setCurrentPost(props.data)}>
-            Edit
-          </Button>
-            
+          <Link
+             to={`/post/${id}`}
+          >
+            <Button onClick={() => props.onEditPost(props.data)}>
+              Edit
+            </Button>
+          </Link>
           Posted in {moment(timestamp).format('LLLL')}        
         </div>
         <div>

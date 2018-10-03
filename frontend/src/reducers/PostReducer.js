@@ -38,7 +38,7 @@ export default (state = initialState, action) => {
     return { 
       ...state, 
       postFilter: action.payload,
-      postList: state.postList.sort((a, b) => {
+      postList: [...state.postList].sort((a, b) => {
         if (action.payload === 'Score') {
           return a.voteScore < b.voteScore ? 1: -1;
         } else {
@@ -49,7 +49,7 @@ export default (state = initialState, action) => {
   case DELETE_POST:
     return {
       ...state,
-      postList: state.postList.filter(post => post.id !== action.payload ).sort((a, b) =>{
+      postList: [...state.postList].filter(post => post.id !== action.payload ).sort((a, b) =>{
         if (state.postFilter === 'Score') {
           return a.voteScore < b.voteScore ? 1: -1;
         } else {
